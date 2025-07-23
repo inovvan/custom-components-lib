@@ -1,5 +1,5 @@
 import * as styles from "./Button.module.scss";
-import useFillAnimation from "../hooks/useFillAnimation";
+import useFillAnimation from "../../hooks/useFillAnimation";
 import GrowingCircle from "./components/growingCircle/GrowingCircle";
 
 type ButtonVariant = "text" | "contained" | "outlined";
