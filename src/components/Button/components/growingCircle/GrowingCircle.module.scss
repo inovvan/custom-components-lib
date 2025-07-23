@@ -1,0 +1,33 @@
+@use "../../../../styles/colors" as colors;
+
+.growingCircle {
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: colors.$color-primary;
+  border-radius: 50%;
+  opacity: 0.2;
+  transform: scale(0);
+  transition: all 0.8s ease;
+  z-index: -1;
+}
+
+.growingCircle--contaied {
+  opacity: 0.5;
+  background-color: colors.$color-gray-dark;
+}
+
+.animationIn {
+  transform: scale(240);
+  opacity: 0.3;
+
+  &.growingCircle--contaied {
+    opacity: 0.8;
+  }
+}
+
+.animationOut {
+  transform: scale(240);
+  opacity: 0;
+}

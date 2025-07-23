@@ -1,0 +1,104 @@
+@use "../../styles/colors" as colors;
+
+.button {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.button--small {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+.button--medium {
+  font-size: 16px;
+  padding: 6px 16px;
+}
+
+.button--large {
+  font-size: 20px;
+  padding: 8px 22px;
+}
+
+.button--text {
+  background: none;
+  color: colors.$color-primary;
+  background-color: rgba(colors.$color-primary, 0);
+
+  &:not(.button--disabled):hover {
+    background-color: rgba(colors.$color-primary, 0.1);
+  }
+}
+
+.button--contained {
+  background-color: colors.$color-primary;
+  color: white;
+  border: 1px solid colors.$color-primary;
+
+  &:not(.button--disabled):hover {
+    background-color: colors.$color-primary-dark;
+    box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  &:not(.button--disabled):active {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.button--outlined {
+  background: none;
+  color: colors.$color-primary;
+  border: 1px solid colors.$color-primary;
+  background-color: rgba(colors.$color-primary, 0);
+
+  &:not(.button--disabled):hover {
+    background-color: rgba(colors.$color-primary, 0.1);
+  }
+}
+
+.button--disabled {
+  cursor: default;
+
+  &.button--text {
+    color: colors.$color-gray-medium;
+  }
+
+  &.button--contained {
+    color: colors.$color-gray-dark;
+    background-color: colors.$color-gray-light;
+    border: 1px solid colors.$color-gray-light;
+  }
+
+  &.button--outlined {
+    color: colors.$color-gray-medium;
+    border: 1px solid colors.$color-gray-medium;
+  }
+}
+
+.animation {
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: colors.$color-primary;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.animationIn {
+  transform: scale(240);
+  opacity: 1;
+}
+
+.animationOut {
+  transform: scale(240);
+  opacity: 0;
+}
