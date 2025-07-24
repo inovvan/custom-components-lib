@@ -9,7 +9,6 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   variant?: ButtonVariant;
   size?: ButtonSize;
-  onClick?: () => void;
 }
 
 const Button = ({
