@@ -1,9 +1,9 @@
-import * as styles from "./TextField.module.scss";
 import { useState } from "react";
+import InputWrapper from "../inputWrapper/InputWrapper";
+
 type InputVariant = "outlined" | "filled" | "standard";
 type InputSize = "small" | "normal";
-
-interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
+interface TextFiledProps extends React.HTMLAttributes<HTMLInputElement> {
   id: string;
   disabled?: boolean;
   error?: boolean;
@@ -13,7 +13,7 @@ interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   initialValue?: string;
 }
 
-const Input = ({
+const TextFiled = ({
   id,
   disabled = false,
   variant = "standard",
@@ -22,42 +22,32 @@ const Input = ({
   labelText = "",
   initialValue = "",
   ...rest
-}: InputProps) => {
+}: TextFiledProps) => {
   const [value, setValue] = useState(initialValue);
-  const [isFocused, setIsFocused] = useState(false);
-
-  const classNames = [
-    styles["text-field"],
-    styles[`text-field--${size}`],
-    styles[`text-field--${variant}`],
-    disabled && styles[`text-field--disabled`],
-    error && styles[`text-field--error`],
-    isFocused && styles[`text-field--focused`],
-    value && styles[`text-field--value`],
-  ].join(" ");
 
   return (
-    <div
-      className={classNames}
-      onFocus={() => setIsFocused(true)}
-      onBlur={() => setIsFocused(false)}
-    >
-      <label htmlFor={id} className={styles["text-field__label"]}>
-        {error ? "Error" : labelText}
-      </label>
-
-      <input
-        value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
+    <>
+      <InputWrapper
         id={id}
-        className={styles["text-field__input"]}
         disabled={disabled}
-        {...rest}
-      />
-    </div>
+        variant={variant}
+        size={size}
+        error={error}
+        labelText={labelText}
+        value={value}
+      >
+        <input
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+          id={id}
+          disabled={disabled}
+          {...rest}
+        />
+      </InputWrapper>
+    </>
   );
 };
 
-export default Input;
+export default TextFiled;

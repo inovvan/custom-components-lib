@@ -1,3 +1,5 @@
+import TextFiled from "./textField/TextFiled";
+
 export const App = () => {
   return (
     <div
@@ -10,6 +12,9 @@ export const App = () => {
         width: "100%",
         height: "100vh",
       }}
-    ></div>
+    >
+      <TextFiled id="1" variant="outlined" labelText="Label text" />
+      <TextFiled id="1" size="small" labelText="Label text" />
+    </div>
   );
 };

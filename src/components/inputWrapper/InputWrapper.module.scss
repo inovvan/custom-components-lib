@@ -4,6 +4,13 @@
   box-sizing: border-box;
   position: relative;
   transition: background-color 0.2s ease-in-out;
+  width: 13.3em;
+
+  input {
+    all: unset;
+    position: relative;
+    display: inline-block;
+  }
 }
 
 .text-field--standard::before,
@@ -40,13 +47,6 @@
   left: 0.7em;
 }
 
-.text-field__input {
-  all: unset;
-  position: relative;
-  display: inline-block;
-  width: 13.3em;
-}
-
 .text-field--small {
   font-size: 12px;
 }
@@ -59,7 +59,7 @@
   outline: 1px solid colors.$color-gray-dark;
   border-radius: 3px;
 
-  & .text-field__input {
+  & input {
     padding: 0.57em 0.7em;
   }
 
@@ -77,7 +77,7 @@
     top: 1.3em;
   }
 
-  & .text-field__input {
+  & input {
     padding: 1.3em 0.7em 0.57em 0.7em;
   }
 
@@ -96,8 +96,9 @@
     left: 0;
   }
 
-  & .text-field__input {
+  & input {
     padding: 0.57em 0;
+    max-width: 100%;
   }
 
   &:not(.text-field--disabled):hover::before {
@@ -106,7 +107,7 @@
 }
 
 .text-field--focused,
-.text-field--value,
+.text-field--not-empty,
 .text-field--disabled {
   .text-field__label {
     padding: 3px;
