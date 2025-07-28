@@ -1,6 +1,9 @@
-import Switch from "./switch/Switch";
+import Modal from "./modal/Modal";
+import { useState } from "react";
 
 export const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div
       style={{
@@ -13,15 +16,12 @@ export const App = () => {
         height: "100vh",
       }}
     >
-      <Switch
-        name="checkbox1"
-        value="checkbox1"
-        labelText="Checkbox 1"
-        color="primary"
-        size="small"
-        checked
-        disabled
-      />
+      <h1>Custom Components Library</h1>
+      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <h1>Welcome to the Custom Components Library</h1>
+        <p>This is a simple modal example.</p>
+      </Modal>
     </div>
   );
 };
