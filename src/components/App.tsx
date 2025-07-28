@@ -1,6 +1,4 @@
-import Select from "./select/Select";
-import TextFiled from "./textField/TextFiled";
-import MenuItem from "./menuItem/MenuItem";
+import Checkbox from "./checkbox/Checkbox";
 
 export const App = () => {
   return (
@@ -15,15 +13,15 @@ export const App = () => {
         height: "100vh",
       }}
     >
-      <Select id="1" variant="standard" labelText="Label text">
-        <MenuItem value={"1"}>Один</MenuItem>
-        <MenuItem value={"2"}>Два</MenuItem>
-        <MenuItem value={"3"}>Три</MenuItem>
-        <MenuItem value={"4"}>Четыре</MenuItem>
-        <MenuItem value={"4"}>Четыре</MenuItem>
-        <MenuItem value={"4"}>Четыре</MenuItem>
-      </Select>
-      <TextFiled id="2" variant="filled" size="normal" labelText="Label text" />
+      <Checkbox
+        name="checkbox1"
+        value="checkbox1"
+        labelText="Checkbox 1"
+        color="error"
+        size="large"
+        checked
+        disabled
+      />
     </div>
   );
 };

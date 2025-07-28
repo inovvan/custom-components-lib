@@ -8,7 +8,8 @@
     "allowJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "lib": ["DOM", "ES2015", "DOM.Iterable"]
   },
   "ts-node": {
     "compilerOptions": {
