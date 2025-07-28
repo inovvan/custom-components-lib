@@ -4,12 +4,12 @@
   box-sizing: border-box;
   position: relative;
   transition: background-color 0.2s ease-in-out;
-  width: 13.3em;
+  width: fit-content;
 
   input {
     all: unset;
     position: relative;
-    display: inline-block;
+    box-sizing: border-box;
   }
 }
 
@@ -21,8 +21,8 @@
   left: 0;
   right: 0;
   height: 0.5px;
-  background-color: colors.$color-gray-darker;
-  transition: height 0.2s ease-in-out;
+  background-color: colors.$color-gray-medium;
+  transition: height 200ms ease-in-out;
 }
 
 .text-field--filled::after,
@@ -47,14 +47,6 @@
   left: 0.7em;
 }
 
-.text-field--small {
-  font-size: 12px;
-}
-
-.text-field--normal {
-  font-size: 14px;
-}
-
 .text-field--outlined {
   outline: 1px solid colors.$color-gray-dark;
   border-radius: 3px;
@@ -74,7 +66,7 @@
 
   & .text-field__label {
     color: colors.$color-gray-darker;
-    top: 1.3em;
+    top: 1em;
   }
 
   & input {
@@ -86,7 +78,7 @@
   }
 
   &:not(.text-field--disabled):hover::before {
-    height: 1.1px;
+    background-color: colors.$color-gray-darker;
   }
 }
 
@@ -102,7 +94,7 @@
   }
 
   &:not(.text-field--disabled):hover::before {
-    height: 1.1px;
+    background-color: colors.$color-gray-darker;
   }
 }
 
@@ -119,15 +111,13 @@
     transform: translateY(-1.7em);
   }
 
-  &.text-field--filled,
-  &.text-field--standard {
-    & .text-field__label {
-      transform: translateY(-1.2em);
-    }
+  &.text-field--filled .text-field__label {
+    transform: translateY(-0.9em);
   }
 
   &.text-field--standard .text-field__label {
     padding: 0px;
+    transform: translateY(-1.2em);
   }
 }
 
