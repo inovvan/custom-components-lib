@@ -1,4 +1,4 @@
-import Checkbox from "./checkbox/Checkbox";
+import Switch from "./switch/Switch";
 
 export const App = () => {
   return (
@@ -13,12 +13,12 @@ export const App = () => {
         height: "100vh",
       }}
     >
-      <Checkbox
+      <Switch
         name="checkbox1"
         value="checkbox1"
         labelText="Checkbox 1"
-        color="error"
-        size="large"
+        color="primary"
+        size="small"
         checked
         disabled
       />
