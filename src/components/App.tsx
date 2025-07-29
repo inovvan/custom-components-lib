@@ -1,5 +1,7 @@
+import Button from "./button/Button";
 import Modal from "./modal/Modal";
 import { useState } from "react";
+import TextFiled from "./textField/TextFiled";
 
 export const App = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +18,10 @@ export const App = () => {
         height: "100vh",
       }}
     >
+      <TextFiled id="name" labelText="Name" variant="outlined" error={true} />
+      <Button size="large" variant="contained">
+        QWESAD
+      </Button>
       <h1>Custom Components Library</h1>
       <button onClick={() => setIsOpen(true)}>Open Modal</button>
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>

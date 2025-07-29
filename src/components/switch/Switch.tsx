@@ -41,11 +41,13 @@ const Switch = ({
     >
       <div className={styles["switch__input-container"]}>
         <input
-          onClick={handleSwitchChange}
+          onChange={handleSwitchChange}
           type="checkbox"
           id={value}
           name={name}
           value={value}
+          checked={isChecked}
+          disabled={disabled}
           {...rest}
         />
         <span className={styles["switch__slider"]}></span>

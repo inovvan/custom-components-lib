@@ -72,6 +72,7 @@ const Select = ({
             readOnly
             id={id}
             disabled={disabled}
+            data-testid="select-input"
             {...rest}
           />
           <svg

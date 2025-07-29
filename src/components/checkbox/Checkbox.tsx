@@ -41,11 +41,13 @@ const Checkbox = ({
     >
       <div className={styles["checkbox__input-container"]}>
         <input
-          onClick={handleCheckboxChange}
+          onChange={handleCheckboxChange}
           type="checkbox"
           id={value}
           name={name}
           value={value}
+          checked={isChecked}
+          disabled={disabled}
           {...rest}
         />
         <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">

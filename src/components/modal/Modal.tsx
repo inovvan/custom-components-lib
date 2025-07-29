@@ -14,6 +14,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
       <div
         className={styles["modal__content"]}
         onClick={(e) => e.stopPropagation()}
+        data-testid="modal-content"
       >
         <button className={styles["modal__close-button"]} onClick={onClose}>
           &times;

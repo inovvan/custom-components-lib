@@ -39,12 +39,13 @@ export default (env: EnvVariables) => {
           ],
         },
         {
-          test: /\.s[ac]ss$/i,
+          test: /\.module\.s[ac]ss$/i,
           use: [
             "style-loader",
             {
               loader: "css-loader",
               options: {
+                esModule: true,
                 modules: {
                   localIdentName: "[local]__[hash:base64:8]",
                 },
@@ -52,6 +53,11 @@ export default (env: EnvVariables) => {
             },
             "sass-loader",
           ],
+        },
+        {
+          test: /\.s[ac]ss$/i,
+          exclude: /\.module\.s[ac]ss$/i,
+          use: ["style-loader", "css-loader", "sass-loader"],
         },
       ],
     },
