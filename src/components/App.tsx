@@ -1,8 +1,7 @@
 import Button from "./button/Button";
 import Modal from "./modal/Modal";
 import { useState } from "react";
-import TextFiled from "./textField/TextFiled";
-import { Checkbox, Select, Switch } from "../futureIndex";
+import { Checkbox, Select, Switch, TextField } from "..";
 import MenuItem from "./menuItem/MenuItem";
 
 export const App = () => {
@@ -20,7 +19,7 @@ export const App = () => {
         height: "100vh",
       }}
     >
-      <TextFiled id="name" labelText="Name" variant="outlined" error={true} />
+      <TextField id="name" labelText="Name" variant="outlined" error={true} />
       <Button size="large" variant="contained">
         QWESAD
       </Button>

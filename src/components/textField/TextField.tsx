@@ -1,7 +1,7 @@
 import { useState } from "react";
 import InputWrapper from "../inputWrapper/InputWrapper";
 import { clsx } from "clsx";
-import * as styles from "./TextFiled.module.scss";
+import * as styles from "./TextField.module.scss";
 type InputVariant = "outlined" | "filled" | "standard";
 type InputSize = "small" | "normal";
 interface TextFiledProps extends React.HTMLAttributes<HTMLInputElement> {
@@ -15,7 +15,7 @@ interface TextFiledProps extends React.HTMLAttributes<HTMLInputElement> {
   initialValue?: string;
 }
 
-const TextFiled = ({
+const TextField = ({
   id,
   disabled = false,
   width,
@@ -58,4 +58,4 @@ const TextFiled = ({
   );
 };
 
-export default TextFiled;
+export default TextField;

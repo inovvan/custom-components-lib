@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import TextField from "../components/textField/TextFiled";
+import TextField from "../components/textField/TextField";
 
 const meta = {
   component: TextField,

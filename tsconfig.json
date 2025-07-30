@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "ESnext",
     "target": "es5",
@@ -9,11 +8,14 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": ["DOM", "ES2015", "DOM.Iterable"]
+    "lib": ["DOM", "ES2015", "DOM.Iterable"],
+    "declaration": true
   },
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "build", ".src/stories" ]
 }
