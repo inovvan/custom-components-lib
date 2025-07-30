@@ -70,7 +70,7 @@
   }
 
   & input {
-    padding: 1.3em 0.7em 0.57em 0.7em;
+    padding: 1.1em 0.7em 0.57em 0.7em;
   }
 
   &:not(.text-field--disabled):hover {
@@ -112,7 +112,7 @@
   }
 
   &.text-field--filled .text-field__label {
-    transform: translateY(-0.9em);
+    transform: translateY(-1.1em);
   }
 
   &.text-field--standard .text-field__label {

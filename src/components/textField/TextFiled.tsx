@@ -7,7 +7,7 @@ type InputSize = "small" | "normal";
 interface TextFiledProps extends React.HTMLAttributes<HTMLInputElement> {
   id: string;
   disabled?: boolean;
-  width?: number;
+  width?: number | null;
   error?: boolean;
   variant?: InputVariant;
   size?: InputSize;
@@ -27,6 +27,7 @@ const TextFiled = ({
   ...rest
 }: TextFiledProps) => {
   const [value, setValue] = useState(initialValue);
+  const [isFocused, setIsFocused] = useState(false);
 
   return (
     <div className={clsx(styles[`text-field--${size}`])}>
@@ -37,8 +38,11 @@ const TextFiled = ({
         error={error}
         labelText={labelText}
         value={value}
+        focused={isFocused}
       >
         <input
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           type="text"
           style={width && { width: `${width}px` }}
           value={value}

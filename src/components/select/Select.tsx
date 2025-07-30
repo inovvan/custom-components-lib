@@ -2,6 +2,7 @@ import React, { useState, ReactElement, useEffect, useRef } from "react";
 import InputWrapper from "../inputWrapper/InputWrapper";
 import * as styles from "./Select.module.scss";
 import clsx from "clsx";
+import useClickOutside from "../../hooks/useClickOutside";
 type InputVariant = "outlined" | "filled" | "standard";
 type InputSize = "small" | "normal";
 interface Child {
@@ -37,7 +38,7 @@ const Select = ({
   const [defaultWidth, setDefaultWidth] = useState<string | number>("auto");
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [isFocused, setIsFocused] = useState(false);
+  const isFocused = useClickOutside(inputRef);
 
   useEffect(() => {
     if (!width) {
@@ -58,12 +59,11 @@ const Select = ({
         error={error}
         labelText={labelText}
         value={value}
+        focused={isFocused}
       >
         <div>
           <input
             ref={inputRef}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
             style={
               width ? { width: `${width}px` } : { width: `${defaultWidth}px` }
             }
