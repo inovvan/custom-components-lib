@@ -1,5 +1,4 @@
 import path from "path";
-import HTMLWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import webpack from "webpack";
 import "webpack-dev-server";
@@ -15,15 +14,22 @@ export default (env: EnvVariables) => {
     mode: env.mode ?? "development",
     entry: path.resolve(__dirname, "src", "index.ts"),
     output: {
-      path: path.resolve(__dirname, "build"),
+      path: path.resolve(__dirname, "dist"),
       filename: "index.js",
+      library: {
+        type: "module",
+      },
+      clean: true,
+      module: true,
     },
-    plugins: [
-      new HTMLWebpackPlugin({
-        template: path.resolve(__dirname, "public", "index.html"),
-      }),
-      new ForkTsCheckerWebpackPlugin(),
-    ],
+    experiments: {
+      outputModule: true,
+    },
+    externals: {
+      react: "react",
+      "react-dom": "react-dom",
+    },
+    plugins: [new ForkTsCheckerWebpackPlugin()],
     module: {
       rules: [
         {
