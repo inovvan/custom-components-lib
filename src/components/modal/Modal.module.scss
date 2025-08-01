@@ -36,8 +36,10 @@
   line-height: 1;
   color: colors.$color-gray-dark;
 
-  &:hover {
-    color: colors.$color-black;
+  @media (hover: hover) {
+    &:hover {
+      color: colors.$color-black;
+    }
   }
 }
 

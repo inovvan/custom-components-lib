@@ -1,6 +1,6 @@
 import * as styles from "./Button.module.scss";
 import useFillAnimation from "../../hooks/useFillAnimation";
-import GrowingCircle from "./components/growingCircle/GrowingCircle";
+import GrowingCircle from "./components/GrowingCircle/GrowingCircle";
 
 type ButtonVariant = "text" | "contained" | "outlined";
 type ButtonSize = "small" | "medium" | "large";

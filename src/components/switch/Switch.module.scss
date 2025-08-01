@@ -135,9 +135,11 @@ $colors: (
       }
     }
 
-    &.switch--#{$name} .switch__input-container:hover {
-      & .switch__slider-sircle-wrapper {
-        background-color: rgba($color, 0.1);
+    @media (hover: hover) {
+      &.switch--#{$name} .switch__input-container:hover {
+        & .switch__slider-sircle-wrapper {
+          background-color: rgba($color, 0.1);
+        }
       }
     }
   }
@@ -146,9 +148,11 @@ $colors: (
     cursor: default;
     color: colors.$color-gray-medium;
 
-    & .switch__input-container:hover {
-      & .switch__slider-sircle-wrapper {
-        background-color: transparent;
+    @media (hover: hover) {
+      & .switch__input-container:hover {
+        & .switch__slider-sircle-wrapper {
+          background-color: transparent;
+        }
       }
     }
 

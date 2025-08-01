@@ -80,15 +80,19 @@
 .select__option {
   cursor: default;
   padding: 0.3em 0.88em;
-  &:hover {
-    background-color: colors.$color-gray-lighter;
+  @media (hover: hover) {
+    &:hover {
+      background-color: colors.$color-gray-lighter;
+    }
   }
 }
 
 .select__option--active {
   background-color: rgba(colors.$color-primary, 0.1);
 
-  &:hover {
-    background-color: rgba(colors.$color-primary, 0.2);
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgba(colors.$color-primary, 0.2);
+    }
   }
 }

@@ -66,8 +66,10 @@ $colors: (
       }
     }
 
-    &.checkbox--#{$name} .checkbox__input-container:hover {
-      background-color: rgba($color, 0.1);
+    @media (hover: hover) {
+      &.checkbox--#{$name} .checkbox__input-container:hover {
+        background-color: rgba($color, 0.1);
+      }
     }
   }
 
@@ -78,9 +80,10 @@ $colors: (
     & svg {
       fill: colors.$color-gray-medium;
     }
-
-    & .checkbox__input-container:hover {
-      background-color: transparent;
+    @media (hover: hover) {
+      & .checkbox__input-container:hover {
+        background-color: transparent;
+      }
     }
   }
 }

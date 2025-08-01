@@ -55,8 +55,10 @@
     padding: 0.57em 0.7em;
   }
 
-  &:not(.text-field--disabled, .text-field--error):hover {
-    outline: 1px solid colors.$color-black;
+  @media (hover: hover) {
+    &:not(.text-field--disabled, .text-field--error):hover {
+      outline: 1px solid colors.$color-black;
+    }
   }
 }
 
@@ -73,12 +75,16 @@
     padding: 1.1em 0.7em 0.57em 0.7em;
   }
 
-  &:not(.text-field--disabled):hover {
-    background-color: colors.$color-gray-light;
+  @media (hover: hover) {
+    &:not(.text-field--disabled):hover {
+      background-color: colors.$color-gray-light;
+    }
   }
 
-  &:not(.text-field--disabled):hover::before {
-    background-color: colors.$color-gray-darker;
+  @media (hover: hover) {
+    &:not(.text-field--disabled):hover::before {
+      background-color: colors.$color-gray-darker;
+    }
   }
 }
 
@@ -93,8 +99,10 @@
     max-width: 100%;
   }
 
-  &:not(.text-field--disabled):hover::before {
-    background-color: colors.$color-gray-darker;
+  @media (hover: hover) {
+    &:not(.text-field--disabled):hover::before {
+      background-color: colors.$color-gray-darker;
+    }
   }
 }
 

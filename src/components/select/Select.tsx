@@ -1,5 +1,5 @@
 import React, { useState, ReactElement, useEffect, useRef } from "react";
-import InputWrapper from "../inputWrapper/InputWrapper";
+import InputWrapper from "../InputWrapper/InputWrapper";
 import * as styles from "./Select.module.scss";
 import clsx from "clsx";
 import useClickOutside from "../../hooks/useClickOutside";

@@ -1,7 +1,6 @@
-export { default as Button } from "./components/button/Button";
-export { default as Checkbox } from "./components/checkbox/Checkbox";
-export { default as Modal } from "./components/modal/Modal";
-export { default as Select } from "./components/select/Select";
-export { default as Switch } from "./components/switch/Switch";
-export { default as TextField } from "./components/textField/TextField";
-export { default as MenuItem } from "./components/menuItem/MenuItem"
+export { default as Button } from "./components/Button/Button";
+export { default as Checkbox } from "./components/Checkbox/Checkbox";
+export { default as Modal } from "./components/Modal/Modal";
+export { default as Select } from "./components/Select/Select";
+export { default as Switch } from "./components/Switch/Switch";
+export { default as TextField } from "./components/TextField/TextField";
