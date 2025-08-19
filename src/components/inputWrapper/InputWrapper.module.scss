@@ -1,0 +1,182 @@
+@use "../../styles/colors" as colors;
+
+.text-field {
+  box-sizing: border-box;
+  position: relative;
+  transition: background-color 0.2s ease-in-out;
+  width: fit-content;
+
+  input {
+    all: unset;
+    position: relative;
+    box-sizing: border-box;
+  }
+}
+
+.text-field--standard::before,
+.text-field--filled::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.5px;
+  background-color: colors.$color-gray-medium;
+  transition: height 200ms ease-in-out;
+}
+
+.text-field--filled::after,
+.text-field--standard::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  transform: scaleX(0);
+  background-color: colors.$color-primary;
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+.text-field__label {
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  display: block;
+  color: colors.$color-gray-dark;
+  top: 0.57em;
+  left: 0.7em;
+}
+
+.text-field--outlined {
+  outline: 1px solid colors.$color-gray-dark;
+  border-radius: 3px;
+
+  & input {
+    padding: 0.57em 0.7em;
+  }
+
+  @media (hover: hover) {
+    &:not(.text-field--disabled, .text-field--error):hover {
+      outline: 1px solid colors.$color-black;
+    }
+  }
+}
+
+.text-field--filled {
+  background-color: colors.$color-gray-lighter;
+  border-radius: 4px 4px 0 0;
+
+  & .text-field__label {
+    color: colors.$color-gray-darker;
+    top: 1em;
+  }
+
+  & input {
+    padding: 1.1em 0.7em 0.57em 0.7em;
+  }
+
+  @media (hover: hover) {
+    &:not(.text-field--disabled):hover {
+      background-color: colors.$color-gray-light;
+    }
+  }
+
+  @media (hover: hover) {
+    &:not(.text-field--disabled):hover::before {
+      background-color: colors.$color-gray-darker;
+    }
+  }
+}
+
+.text-field--standard {
+  & .text-field__label {
+    color: colors.$color-gray-dark;
+    left: 0;
+  }
+
+  & input {
+    padding: 0.57em 0;
+    max-width: 100%;
+  }
+
+  @media (hover: hover) {
+    &:not(.text-field--disabled):hover::before {
+      background-color: colors.$color-gray-darker;
+    }
+  }
+}
+
+.text-field--focused,
+.text-field--not-empty,
+.text-field--disabled {
+  .text-field__label {
+    padding: 3px;
+    font-size: 0.75em;
+  }
+
+  &.text-field--outlined .text-field__label {
+    background-color: colors.$color-white;
+    transform: translateY(-1.7em);
+  }
+
+  &.text-field--filled .text-field__label {
+    transform: translateY(-1.1em);
+  }
+
+  &.text-field--standard .text-field__label {
+    padding: 0px;
+    transform: translateY(-1.2em);
+  }
+}
+
+.text-field--disabled {
+  cursor: auto;
+  color: colors.$color-gray-dark;
+}
+
+.text-field.text-field--focused {
+  .text-field__label {
+    color: colors.$color-primary;
+  }
+
+  &.text-field--outlined {
+    outline: 2px solid colors.$color-primary;
+
+    &.text-field--error {
+      outline-color: colors.$color-error;
+    }
+  }
+
+  &.text-field--filled {
+    background-color: colors.$color-gray-lighter;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &.text-field--standard::after {
+    transform: scaleX(1);
+  }
+}
+
+.text-field.text-field--error {
+  .text-field__label {
+    color: colors.$color-error;
+  }
+
+  &.text-field--outlined {
+    outline: 1px solid colors.$color-error;
+  }
+
+  &.text-field--filled,
+  &.text-field--standard {
+    &::before {
+      background-color: colors.$color-error;
+    }
+
+    &::after {
+      background-color: colors.$color-error;
+    }
+  }
+}

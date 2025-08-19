@@ -1,0 +1,167 @@
+@use "../../styles/colors" as colors;
+@use "sass:color";
+@use "sass:map";
+
+$sizes: (
+  small: (
+    sliderWidth: 26px,
+    sliderHeight: 10px,
+    sliderBorderRadius: 7px,
+    sircleWrapperSize: 24px,
+    sircleWrapperPadding: 4px,
+    sircleWrapperTop: 3px,
+    sircleSize: 16px,
+  ),
+  medium: (
+    sliderWidth: 34px,
+    sliderHeight: 14px,
+    sliderBorderRadius: 7px,
+    sircleWrapperSize: 38px,
+    sircleWrapperPadding: 9px,
+    sircleWrapperTop: -2px,
+    sircleSize: 20px,
+  ),
+);
+
+$colors: (
+  primary: colors.$color-primary,
+  success: colors.$color-success,
+  error: colors.$color-error,
+);
+
+.switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: inherit;
+  cursor: pointer;
+
+  &__input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  & input {
+    position: absolute;
+    cursor: inherit;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+
+  & label {
+    cursor: inherit;
+  }
+
+  &__slider {
+    background-color: colors.$color-gray-darker;
+    opacity: 0.5;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &__slider-sircle-wrapper {
+    position: absolute;
+    box-sizing: border-box;
+    left: 0px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &__slider-sircle {
+    display: block;
+    box-shadow: var(
+      --mui-shadows-1,
+      0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.12)
+    );
+    background-color: colors.$color-white;
+    border-radius: 50%;
+  }
+
+  @each $name, $size in $sizes {
+    &--#{$name} {
+      & .switch__slider {
+        width: map.get($size, sliderWidth);
+        height: map.get($size, sliderHeight);
+        border-radius: map.get($size, sliderBorderRadius);
+      }
+
+      & .switch__slider-sircle-wrapper {
+        width: map.get($size, sircleWrapperSize);
+        height: map.get($size, sircleWrapperSize);
+        padding: map.get($size, sircleWrapperPadding);
+        top: map.get($size, sircleWrapperTop);
+      }
+
+      & .switch__slider-sircle {
+        width: map.get($size, sircleSize);
+        height: map.get($size, sircleSize);
+      }
+    }
+  }
+
+  @each $name, $color in $colors {
+    &.switch--#{$name}.switch--checked {
+      & .switch__slider {
+        background-color: $color;
+      }
+
+      & .switch__slider-sircle-wrapper {
+        transform: translateX(20px);
+      }
+
+      & .switch__slider-sircle {
+        background-color: $color;
+      }
+
+      &.switch--disabled {
+        & .switch__slider {
+          background-color: rgba($color, 0.4);
+        }
+
+        & .switch__slider-sircle {
+          background-color: color.mix(white, $color, 60%);
+        }
+      }
+    }
+
+    @media (hover: hover) {
+      &.switch--#{$name} .switch__input-container:hover {
+        & .switch__slider-sircle-wrapper {
+          background-color: rgba($color, 0.1);
+        }
+      }
+    }
+  }
+
+  &.switch.switch--disabled {
+    cursor: default;
+    color: colors.$color-gray-medium;
+
+    @media (hover: hover) {
+      & .switch__input-container:hover {
+        & .switch__slider-sircle-wrapper {
+          background-color: transparent;
+        }
+      }
+    }
+
+    & .switch__slider {
+      background-color: colors.$color-gray-medium;
+    }
+
+    & .switch__slider-sircle {
+      background-color: colors.$color-gray-lighter;
+    }
+  }
+}

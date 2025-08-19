@@ -1,0 +1,89 @@
+@use "../../styles/colors" as colors;
+
+$sizes: (
+  small: 16px,
+  medium: 22px,
+  large: 26px,
+);
+
+$colors: (
+  primary: colors.$color-primary,
+  success: colors.$color-success,
+  error: colors.$color-error,
+);
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: inherit;
+  cursor: pointer;
+
+  &__input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  & input {
+    position: absolute;
+    cursor: inherit;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+
+  & label {
+    cursor: inherit;
+  }
+
+  & svg {
+    fill: colors.$color-gray-dark;
+    padding: 8px;
+  }
+
+  @each $name, $size in $sizes {
+    &--#{$name} {
+      & svg {
+        width: $size;
+        height: $size;
+      }
+    }
+  }
+
+  @each $name, $color in $colors {
+    &.checkbox--#{$name}.checkbox--checked {
+      & svg {
+        fill: $color;
+      }
+    }
+
+    @media (hover: hover) {
+      &.checkbox--#{$name} .checkbox__input-container:hover {
+        background-color: rgba($color, 0.1);
+      }
+    }
+  }
+
+  &.checkbox.checkbox--disabled {
+    cursor: default;
+    color: colors.$color-gray-medium;
+
+    & svg {
+      fill: colors.$color-gray-medium;
+    }
+    @media (hover: hover) {
+      & .checkbox__input-container:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}

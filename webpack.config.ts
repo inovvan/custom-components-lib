@@ -1,5 +1,4 @@
 import path from "path";
-import HTMLWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import webpack from "webpack";
 import "webpack-dev-server";
@@ -13,17 +12,24 @@ interface EnvVariables {
 export default (env: EnvVariables) => {
   const config: webpack.Configuration = {
     mode: env.mode ?? "development",
-    entry: path.resolve(__dirname, "src", "index.tsx"),
+    entry: path.resolve(__dirname, "src", "index.ts"),
     output: {
-      path: path.resolve(__dirname, "build"),
-      filename: "bundle.js",
+      path: path.resolve(__dirname, "dist"),
+      filename: "index.js",
+      library: {
+        type: "module",
+      },
+      clean: true,
+      module: true,
     },
-    plugins: [
-      new HTMLWebpackPlugin({
-        template: path.resolve(__dirname, "public", "index.html"),
-      }),
-      new ForkTsCheckerWebpackPlugin(),
-    ],
+    experiments: {
+      outputModule: true,
+    },
+    externals: {
+      react: "react",
+      "react-dom": "react-dom",
+    },
+    plugins: [new ForkTsCheckerWebpackPlugin()],
     module: {
       rules: [
         {
@@ -39,12 +45,13 @@ export default (env: EnvVariables) => {
           ],
         },
         {
-          test: /\.s[ac]ss$/i,
+          test: /\.module\.s[ac]ss$/i,
           use: [
             "style-loader",
             {
               loader: "css-loader",
               options: {
+                esModule: true,
                 modules: {
                   localIdentName: "[local]__[hash:base64:8]",
                 },
@@ -52,6 +59,11 @@ export default (env: EnvVariables) => {
             },
             "sass-loader",
           ],
+        },
+        {
+          test: /\.s[ac]ss$/i,
+          exclude: /\.module\.s[ac]ss$/i,
+          use: ["style-loader", "css-loader", "sass-loader"],
         },
       ],
     },

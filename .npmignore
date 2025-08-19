@@ -1,0 +1,10 @@
+tests/
+src/stories/
+src/index.tsx
+src/components/App.tsx
+.storybook/
+*.test.tsx
+*.test.ts
+*.stories.tsx
+.husky/
+build/
